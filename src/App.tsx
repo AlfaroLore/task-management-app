@@ -1,8 +1,8 @@
 function App() {
   return (
-    <>
-      <h1>Welcome Task Management App!</h1>
-    </>
+    <div className="flex justify-center bg-black">
+      <h1 className="text-white">Welcome Task Management App!</h1>
+    </div>
   );
 }
 
