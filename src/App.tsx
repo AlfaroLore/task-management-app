@@ -1,9 +1,24 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/home/Home';
+import NotFound from './pages/notFound/NotFound';
+import Layout from './components/layout/Layout';
+
 function App() {
   return (
-    <div className="flex justify-center bg-black">
-      <h1 className="text-white">Welcome Task Management App!</h1>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
+    </Layout>
   );
 }
 
-export default App;
+function WrappedApp() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
+export default WrappedApp;
