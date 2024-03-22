@@ -4,7 +4,7 @@ import {
   TableCellsIcon,
 } from '@heroicons/react/16/solid';
 import { useState } from 'react';
-import IconButton from 'src/components/iconButton/IconButton';
+import IconButton from 'src/components/atoms/iconButton/IconButton';
 import cx from 'classnames';
 
 function Dashboard() {
@@ -43,7 +43,7 @@ function Dashboard() {
       </div>
       <div className="grid grid-cols-5 p-2 text-white">
         <div>
-          <p>Backlog</p>
+          <p className="font-encodeSans">Backlog</p>
         </div>
         <div>
           <p>Todo</p>
