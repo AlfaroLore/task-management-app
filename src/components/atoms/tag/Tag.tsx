@@ -16,12 +16,12 @@ function Tag({ name }: TagProps) {
     'ring-inset',
     'ring-gray-500/10',
     {
-      'bg-primary2/20 text-primary4': taskName === TaskTag[TaskTag.ANDROID],
+      'bg-primary1 text-primary4': taskName === TaskTag[TaskTag.ANDROID],
       'bg-green-500 text-white': taskName === TaskTag[TaskTag.IOS],
       'bg-blue-500 text-white': taskName === TaskTag[TaskTag.NODE_JS],
       'bg-yellow-500 text-black': taskName === TaskTag[TaskTag.RAILS],
       'bg-white text-black': taskName === TaskTag[TaskTag.REACT],
-      'bg-gray-50 text-gray-600': ![
+      'bg-neutral2/20 text-neutral4': ![
         TaskTag.ANDROID,
         TaskTag.IOS,
         TaskTag.NODE_JS,

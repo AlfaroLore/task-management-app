@@ -1,66 +1,29 @@
 import { DueDateProps } from './typings';
-import { BellIcon } from '@heroicons/react/24/outline';
+import { ClockIcon } from '@heroicons/react/24/outline';
 import cx from 'classnames';
+import {
+  formattedDate,
+  isLessThanTwoDays,
+  isOverdue,
+  isToday,
+  isTomorrow,
+  isYesterday,
+} from 'src/utils/dateUtils';
 
 const DueDate: React.FC<DueDateProps> = ({ dueDate }) => {
   const date = new Date(dueDate);
-
-  const formattedDate = () => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      timeZone: 'UTC',
-    };
-    return date.toLocaleDateString('en-US', options);
-  };
-
-  const isOverdue = () => {
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    return date < today;
-  };
-
-  const isLessThanTwoDays = () => {
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    const twoDaysFromNow = new Date(today);
-    twoDaysFromNow.setUTCDate(twoDaysFromNow.getUTCDate() + 2);
-    return date.getTime() <= twoDaysFromNow.getTime();
-  };
-
-  const isTomorrow = () => {
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    const tomorrow = new Date(today);
-    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-    return date.getTime() === tomorrow.getTime();
-  };
-
-  const isToday = () => {
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    return date.getTime() === today.getTime();
-  };
-
-  const isYesterday = () => {
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    const yesterday = new Date(today);
-    yesterday.setUTCDate(yesterday.getUTCDate() - 1);
-    return date.getTime() === yesterday.getTime();
-  };
-
   let displayText = '';
+  const overdue = isOverdue(date);
+  const lessThanTwoDays = isLessThanTwoDays(date);
 
-  if (isTomorrow()) {
+  if (isTomorrow(date)) {
     displayText = 'Tomorrow';
-  } else if (isToday()) {
+  } else if (isToday(date)) {
     displayText = 'Today';
-  } else if (isYesterday()) {
+  } else if (isYesterday(date)) {
     displayText = 'Yesterday';
   } else {
-    displayText = formattedDate();
+    displayText = formattedDate(date);
   }
 
   return (
@@ -68,22 +31,22 @@ const DueDate: React.FC<DueDateProps> = ({ dueDate }) => {
       className={cx(
         'inline-flex items-center rounded-md px-2 py-1 text-sm gap-1 font-bold',
         {
-          'bg-primary2/20 text-primary4': isOverdue(),
+          'bg-primary2/20 text-primary4': overdue,
         },
         {
-          'bg-neutral2/20 text-white': !isOverdue() && !isLessThanTwoDays(),
+          'bg-neutral2/20 text-white': !overdue && !lessThanTwoDays,
         },
         {
-          'bg-tertiary1 text-white': !isOverdue() && isLessThanTwoDays(),
+          'bg-tertiary1 text-white': !overdue && lessThanTwoDays,
         }
       )}
     >
-      <BellIcon
+      <ClockIcon
         className={cx(
           'h-4 w-4',
-          { 'text-primary4': isOverdue() },
-          { 'text-neutral1': !isOverdue() && !isLessThanTwoDays() },
-          { 'text-tertiary1': !isOverdue() && isLessThanTwoDays() }
+          { 'text-primary4': overdue },
+          { 'text-neutral1': !overdue && !lessThanTwoDays },
+          { 'text-tertiary1': !overdue && lessThanTwoDays }
         )}
       />
       {displayText}

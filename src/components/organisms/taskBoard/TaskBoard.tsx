@@ -9,8 +9,8 @@ const TaskBoard = ({ tasks, loadingTasks, errorTasks }: TaskBoardProps) => {
     <div className="grid grid-cols-5 p-2 text-white gap-2">
       {Object.entries(tasks).map(([status, tasksByStatus]) => (
         <div key={status}>
-          <h3 className="mb-4">
-            {status}
+          <h3 className="mb-4 capitalize">
+            {status.replace('_', ' ').toLocaleLowerCase()}
             {` (${tasksByStatus.length})`}
           </h3>
           <TaskColumn tasks={tasksByStatus} />

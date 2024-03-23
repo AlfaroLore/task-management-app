@@ -14,11 +14,11 @@ export type User = {
 };
 
 export enum PointEstimate {
-  EIGHT,
-  FOUR,
-  ONE,
-  TWO,
-  ZERO,
+  EIGHT = 'EIGHT',
+  FOUR = 'FOUR',
+  ONE = 'ONE',
+  TWO = 'TWO',
+  ZERO = 'ZERO',
 }
 
 export enum Status {

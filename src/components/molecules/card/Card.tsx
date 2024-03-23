@@ -4,6 +4,8 @@ import { EllipsisVerticalIcon } from '@heroicons/react/16/solid';
 import Avatar from 'src/components/atoms/avatar/Avatar';
 import Tag from 'src/components/atoms/tag/Tag';
 import DueDate from 'src/components/atoms/dueDate/DueDate';
+import { pointEstimateToNumber } from './helper';
+import { PointEstimate } from 'src/api/response/typings';
 
 function Card({ item }: CardProps) {
   return (
@@ -14,14 +16,14 @@ function Card({ item }: CardProps) {
           <EllipsisVerticalIcon className="h-5 w-5" />
         </IconButton>
       </div>
-      <p className="text-sm">{`${item.pointEstimate} Pts`}</p>
+      <p className="text-sm">{`${pointEstimateToNumber(item.pointEstimate as PointEstimate)} Points`}</p>
       <DueDate dueDate={item.dueDate} />
       <div className="col-span-2">
         {item.tags.map((tag) => (
           <Tag key={tag} name={tag} />
         ))}
       </div>
-      <div>
+      <div className="mt-2">
         <Avatar size="sm" />
       </div>
     </div>
