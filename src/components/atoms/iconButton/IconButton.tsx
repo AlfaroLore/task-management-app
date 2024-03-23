@@ -31,7 +31,7 @@ const IconButton: FC<IconButtonProps> = ({
       },
     };
     const buttonClasses = cx(
-      'rounded-md p-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary4',
+      'rounded-md p-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary4 rounded-full hover:bg-neutral3',
       variants[variant]?.[color]
     );
     return buttonClasses;

@@ -11,10 +11,3 @@ export interface NavigationItem {
     } & RefAttributes<SVGSVGElement>
   >;
 }
-
-export interface CardItem {
-  name: string;
-  tags: string[];
-  dueDate: string;
-  estimatedTime: string;
-}

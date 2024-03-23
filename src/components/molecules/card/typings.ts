@@ -1,5 +1,5 @@
-import { CardItem } from 'src/typings';
+import { Task } from 'src/api/response/typings';
 
 export interface CardProps {
-  item: CardItem;
+  item: Task;
 }

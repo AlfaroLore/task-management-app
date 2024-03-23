@@ -16,6 +16,8 @@ export default {
         primary2: '#EBA59E',
         primary3: '#E27D73',
         primary4: '#DA584B',
+        secondary1: '#C8E1BC',
+        tertiary1: '#F9EEd7',
       },
     },
   },
