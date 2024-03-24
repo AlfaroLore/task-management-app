@@ -20,7 +20,7 @@ Before running the project, make sure you have Node.js and npm installed on your
 2. Navigate to the project directory:
 
    ```bash
-   cd project-name
+   cd task-management-app
    ```
 
 3. Install the dependencies:
