@@ -102,3 +102,4 @@ The components folder structure follows the [Atomic Design](https://atomicdesign
 
 A Trello dashboard was used to track the progress of the project:
 [Dashboard](https://trello.com/b/RZ9UN84n/react-challenge-todo-list)
+Three tasks remain in the backlog for future sprints.
