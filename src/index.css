@@ -1,0 +1,10 @@
+@import '@fontsource-variable/encode-sans';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #222528;
+  color: '#FFFFFF';
+}
