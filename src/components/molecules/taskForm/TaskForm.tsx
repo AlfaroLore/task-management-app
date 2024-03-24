@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { TaskTag, PointEstimate, Status } from 'src/api/response/typings';
+import { TaskTag, PointEstimate, Status, User } from 'src/api/response/typings';
 import { TaskFormProps } from './typings';
+import { useQuery } from '@apollo/client';
+import { GET_USERS } from 'src/api/gql';
 
 const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onClose }) => {
+  const { data: availableUsers, loading, error } = useQuery(GET_USERS);
+
   const [taskTitle, setTaskTitle] = useState('');
   const [estimateTime, setEstimateTime] = useState<PointEstimate>(
     PointEstimate.ZERO
   );
-  const [assignee, setAssignee] = useState('');
+  const [assignee, setAssignee] = useState<string | null>(null);
   const [dueDate, setDueDate] = useState<Date | null>(null);
   const [tags, setTags] = useState<string[]>([]);
 
@@ -19,14 +23,16 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onClose }) => {
     const newTask = {
       name: taskTitle,
       pointEstimate: PointEstimate[estimateTime],
-      assigneeId: assignee,
+      assigneeId: assignee ?? '',
       dueDate: dueDate?.toUTCString() || '',
       status: Status[Status.BACKLOG],
       tags: tags.map((tag) => tag as TaskTag),
     };
-
     onSubmit(newTask);
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error fetching data.</p>;
 
   return (
     <div className="bg-neutral3 text-offWhite p-8 rounded-md">
@@ -68,12 +74,19 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onClose }) => {
             <label className="block text-sm font-medium text-neutral1">
               Assignee
             </label>
-            <input
-              type="text"
-              value={assignee}
-              onChange={(e) => setAssignee(e.target.value)}
+            <select
+              value={availableUsers.users[0].id}
+              onChange={(e) => {
+                setAssignee(e.target.value);
+              }}
               className="mt-1 p-2 w-full border rounded-md bg-neutral3 text-neutral1"
-            />
+            >
+              {availableUsers.users?.map((user: User) => (
+                <option key={user.id} value={user.id}>
+                  {user?.fullName}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-neutral1">
