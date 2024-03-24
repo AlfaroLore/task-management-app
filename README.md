@@ -63,6 +63,9 @@ This project is a task management application inspired by Trello, designed to he
 
 This project was bootstrapped with [Vite](https://vitejs.dev/) + [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/).
 
+## Why Vite?
+Vite was chosen as the build tool for this project due to its fast development server and out-of-the-box support for modern JavaScript features and TypeScript. Vite provides an extremely fast and lean development experience, making it ideal for rapid development and prototyping.
+
 ## Why TypeScript?
 
 TypeScript was chosen for this project due to its ability to handle the contract with the backend types more effectively. By using TypeScript, we can ensure a stronger and more robust connection between the frontend and backend, reducing the likelihood of runtime errors and improving the overall development experience.
@@ -83,11 +86,11 @@ The project is configured with [ESLint](https://eslint.org/) using the [Airbnb s
 
 ### Heroicons
 
-Heroicons were used for adding beautiful and customizable icons to the project. Heroicons provides a set of free, open-source icons crafted specifically for web and application projects.
+Heroicons were used for adding customizable icons to the project. Heroicons provides a set of free, open-source icons crafted specifically for web and application projects.
 
 ### Headless UI
 
-Headless UI components were utilized to build accessible and reusable UI components. Headless UI provides fully accessible, highly customizable, and framework-agnostic UI components that can be used to build custom UIs.
+Headless UI components were utilized to build accessible and reusable UI components. Headless UI provides fully accessible, highly customizable, and framework-agnostic UI components that can be used to build custom UIs. 
 
 ## Components Folder Structure
 
