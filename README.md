@@ -92,6 +92,10 @@ Heroicons were used for adding customizable icons to the project. Heroicons prov
 
 Headless UI components were utilized to build accessible and reusable UI components. Headless UI provides fully accessible, highly customizable, and framework-agnostic UI components that can be used to build custom UIs. 
 
+### React Date Picker
+
+[React Date Picker](https://reactdatepicker.com/) was added to the project for fast development and easy integration of date picker functionality. This library provides a simple and customizable date picker component, which helps in improving the user experience by allowing users to easily select and manage due dates for their tasks.
+
 ## Components Folder Structure
 
 The components folder structure follows the [Atomic Design](https://atomicdesign.bradfrost.com/) methodology. This design system allows for a more systematic and scalable approach to building UI components, making it easier to manage and maintain the project as it grows.
