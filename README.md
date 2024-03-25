@@ -30,6 +30,7 @@ Before running the project, make sure you have Node.js and npm installed on your
    ```
 
 ### Running the Project
+Add a .env file and copy the .env.sample property replacing <YOUR TOKEN> with your token for the syn-api.
 
 To run the project locally, use the following command:
 
